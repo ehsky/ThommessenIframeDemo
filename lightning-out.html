@@ -5,6 +5,7 @@
    </head>
    <body>
       <h2>Lightning Out demo</h2>
+      <button onclick=removeSldsStylesFromLightningOut()>Remove Salesforce Styling</button>
       <!-- Start Copy Lightning Out -->
       <div data-lightning-out="true"></div>
       <script>
@@ -12,7 +13,6 @@
          const componentName = "c:identityVerificationWrapper";
          const targetElm = document.querySelector("[data-lightning-out]");
          const callbackFunction = function (cmp) {
-            removeSldsStylesFromLightningOut();
          };
          const siteEndpoint =
            "https://thommessen--idkontroll.sandbox.my.site.com/idkontroll";
