@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <script src="https://thommessen--idkontroll.sandbox.my.salesforce-sites.com/idkontroll/lightning/lightning.out.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+   </head>
+   <body>
+      <h2>Lightning Out demo</h2>
+      <!--Dette var bare en testknapp for å fjerne styling. Trengs ikke live :)-->
+      <button onclick=removeSldsStylesFromLightningOut()>Remove Salesforce Styling</button>
+      <!-- Start Copy Lightning Out -->
+      <div data-lightning-out="true"></div>
+      <script>
+        const envURL= "https://thommessen--idkontroll.sandbox.my.salesforce-sites.com/idkontroll";
+        const appName = "c:IdentityVerificationApp";
+        const componentName = "c:identityVerificationWrapper";
+        const targetElm = document.querySelector("[data-lightning-out]");
+        //her må dere hente externalReference url-parameter på en annen måte :)
+        const componentAttributes = {
+          externalReference: "{!$CurrentPage.parameters.externalReference}"
+        };
+        const callbackFunction = function (cmp) {
+          //removeSldsStylesFromLightningOut(); 
+          eventMe();
+        };
+        //console.log("ExternalRef: " + "{!$CurrentPage.parameters.externalReference}"); 
+        //environmentspecific baseURL: https://thommessen--idkontroll.sandbox.my.salesforce-sites.com/idkontroll
+        const siteEndpoint = envURL;
+          //"https://thommessen--idkontroll.sandbox.my.salesforce-sites.com/idkontroll/IdentityVerification";
+        // Init Lightning Out through Aura App then create LWC in targetElm
+        $Lightning.use(appName, function () {
+          $Lightning.createComponent(
+            componentName,
+            componentAttributes,
+            targetElm,
+            callbackFunction
+          );
+          siteEndpoint;
+        });
+    
+    
+        /**
+         * Add auth event listner
+         */
+        function eventMe(){
+            window.addEventListener("message", (event) => {
+                console.log('parent VF event origin', event.origin);
+                // if (event.origin !== "https://id.idfy.io") {
+                //   return;
+                // }
+                const data = JSON.parse(event.data);
+                console.log(data.status); // => 'success/aborted/error'
+            });
+    
+        }
+
+        /**
+        * Remove SLDS styles from Lightning Out
+        */
+        function removeSldsStylesFromLightningOut() {
+            const sldsStyles = document.querySelectorAll(
+            "link[rel=stylesheet][class=auraCss]"
+            );
+            sldsStyles.forEach((style) => style.remove());
+        }
+      </script>
+      <!-- End Copy Lightning Out -->
+   </body>
+</html>
