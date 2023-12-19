@@ -17,8 +17,8 @@
         const targetElm = document.querySelector("[data-lightning-out]");
         //her må dere hente externalReference url-parameter på en annen måte :)
         const urlParams = window.location.search;
-        const externalReferenceParam = new URLSearchParams(urlParams);
-        const externalReferenceID = ''
+        var externalReferenceParam = new URLSearchParams(urlParams);
+        var externalReferenceID = ''
         if (externalReferenceParam.get('externalReference')) {
            externalReferenceID = externalReferenceParam.get('externalReference');
         }
