@@ -16,7 +16,7 @@
         const componentName = "c:identityVerificationWrapper";
         const targetElm = document.querySelector("[data-lightning-out]");
         //her må dere hente externalReference url-parameter på en annen måte :)
-        const urlParams = windows.location.search;
+        const urlParams = window.location.search;
         const externalReferenceParam = new URLSearchParams(urlParams);
         const externalReferenceID = ''
         if (externalReferenceParam.get('externalReference')) {
