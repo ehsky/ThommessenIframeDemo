@@ -3,9 +3,28 @@
    <head>
       <script src="https://thommessen--idkontroll.sandbox.my.site.com/idkontroll/lightning/lightning.out.js"></script>
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<script> 
+/* Style the header */
+header {
+  background-color: #666;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+</script>
    </head>
    <body>
-      <h2>Lightning Out demo</h2>
+   <header>
+     <h2>Header</h2>
+   </header>
       <button onclick=removeSldsStylesFromLightningOut()>Remove Salesforce Styling</button>
       <!-- Start Copy Lightning Out -->
       <div data-lightning-out="true"></div>
@@ -37,5 +56,8 @@
     }
       </script>
       <!-- End Copy Lightning Out -->
+   <footer>
+     <p>Footer</p>
+   </footer>
    </body>
 </html>
